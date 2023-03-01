@@ -57,6 +57,18 @@ public class principal {
         System.out.println("espacio libre del directorio en bytes = " + file.getFreeSpace());
         System.out.println("obtener la ruta del recurso = " + file.getParent());
         
+        //  regresa un arreglo de strings, retorna el nombre
+        //  de archivos y directorios, no funciona si estamos en un archivo
+        String lista[] = file.list();
+        
+        //  mismo concepto pero en lugar de retornar cadenas retorna los objetos
+        //  del recorrido del directorio
+        File nombre[] = file.listFiles();
+        
+        for(String cadena : lista) {
+            System.out.println("cadena = " + cadena);
+        }
+        
         file.delete();
         
     }
