@@ -53,9 +53,8 @@ public class EjercicioMultas {
         personas.forEach(persona -> {
             String nombre = persona.getNombre();
 
-            if (!(letrasArchivo.contains(nombre.charAt(0)))) {
-                letrasArchivo.add(nombre.charAt(0));
-            }
+            if (!(letrasArchivo.contains(nombre.charAt(0)))) letrasArchivo.add(nombre.charAt(0));
+            
             try {
                 FileOutputStream file = new FileOutputStream("C:\\Organizacion-archivos\\Clase-Java-8\\Archivos\\Personas\\" + nombre.charAt(0), true);
                 BufferedOutputStream buffer;
