@@ -7,7 +7,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Ejercicio {
-
     public static List<String> leer() throws FileNotFoundException, IOException {
         List<String> informacion = new ArrayList<>();
         FileInputStream file = new FileInputStream("C:\\Organizacion-archivos\\Clase-Java-11\\src\\Archivo\\AccidentesBicicletas.xlsx");
