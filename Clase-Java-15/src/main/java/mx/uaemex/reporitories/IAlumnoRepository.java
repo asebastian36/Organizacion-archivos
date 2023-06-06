@@ -12,4 +12,6 @@ public interface IAlumnoRepository {
     List<Alumno> listar();
     Alumno buscar(Integer id);
     void agregar(Alumno alumno);
+    void actualizar(Alumno alumno);
+    void eliminar(Alumno alumno);
 }

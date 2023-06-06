@@ -15,9 +15,12 @@ public class Main {
         Alumno alumno = servicio.buscar(100);
         System.out.println("alumno = " + alumno);
         
-        Alumno nuevo = new Alumno(null, "Julio", 25);
-        servicio.agregar(nuevo);
-        
+//        Alumno nuevo = new Alumno(null, "Julio", 25);
+//        servicio.agregar(nuevo);
+
+        servicio.actualizar(new Alumno(19, "Juan", 29));
+        servicio.eliminar(new Alumno(12, "", 0));
         servicio.listar().forEach(System.out::println);
+        
     }
 }

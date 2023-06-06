@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import mx.uaemex.entities.Alumno;
 import mx.uaemex.utils.ConexionDB;
 
@@ -43,18 +41,15 @@ public class AlumnoRepository implements IAlumnoRepository {
 
     @Override
     public Alumno buscar(Integer id) {
-        Alumno alumno = null;
         try (PreparedStatement statement = getConnection().prepareStatement("select * from alumnos where id = ?")) {
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
-            if (result.next()) {
-                alumno = getAlumno(result);
-            }
+            if (result.next()) return getAlumno(result);
             result.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return alumno;
+        return null;
     }
 
     @Override
@@ -66,6 +61,25 @@ public class AlumnoRepository implements IAlumnoRepository {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
+    }
+    
+    public void actualizar(Alumno alumno) {
+        try(PreparedStatement statement = getConnection().prepareStatement("update alumnos set nombre=?, edad=? where id=?")) {
+            statement.setString(1, alumno.nombre());
+            statement.setInt(2, alumno.edad());
+            statement.setInt(3, alumno.id());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void eliminar(Alumno alumno) {
+        try(PreparedStatement statement = getConnection().prepareStatement("delete from alumnos where id=?")) {
+            statement.setInt(1, alumno.id());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
